@@ -1,5 +1,5 @@
 class Stylist
-  attr_reader(:stylist_name, :id)
+  attr_reader(:stylist_name, :id, :stylist_id)
 
   define_method(:initialize) do |attributes|
     @stylist_name = attributes.fetch(:stylist_name)
@@ -22,6 +22,10 @@ class Stylist
     @id = result.first().fetch("id").to_i()
   end
 
+  define_method(:==) do |another_stylist|
+    self.stylist_name().==(another_stylist.stylist_name()).&(self.id().==(another_stylist.id()))
+  end
+
   define_singleton_method(:find) do |id|
     found_stylist = nil
     Stylist.all().each() do |stylist_name|
@@ -30,9 +34,5 @@ class Stylist
       end
     end
     found_stylist
-  end
-
-  define_method(:==) do |another_stylist|
-    self.stylist_name().==(another_stylist.stylist_name()).&(self.id().==(another_stylist.id()))
   end
 end
