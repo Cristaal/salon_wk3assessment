@@ -2,7 +2,7 @@ class Stylist
   attr_reader(:stylist_name, :id)
 
   define_method(:initialize) do |attributes|
-    @stylist = attributes.fetch(:stylist)
+    @stylist_name = attributes.fetch(:stylist_name)
     @id = attributes.fetch(:id)
   end
 
@@ -17,4 +17,22 @@ class Stylist
     stylists
   end
 
+  define_method(:save) do
+    result = DB.exec("INSERT INTO stylists (stylist_name) VALUES ('#{@stylist_name}') RETURNING id;")
+    @id = result.first().fetch("id").to_i()
+  end
+
+  define_singleton_method(:find) do |id|
+    found_stylist = nil
+    Stylist.all().each() do |stylist_name|
+      if stylist_name.id().==(id)
+        found_stylist = stylist_name
+      end
+    end
+    found_stylist
+  end
+
+  define_method(:==) do |another_stylist|
+    self.stylist_name().==(another_stylist.stylist_name()).&(self.id().==(another_stylist.id()))
+  end
 end
