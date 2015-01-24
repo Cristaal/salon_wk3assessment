@@ -34,4 +34,6 @@ describe(Client) do
       expect(test_client1).to(eq(test_client2))
     end
   end
+
+
 end

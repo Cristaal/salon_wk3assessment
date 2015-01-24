@@ -48,5 +48,4 @@ class Stylist
     end
     list_clients
   end
-
 end

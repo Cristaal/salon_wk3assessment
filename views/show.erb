@@ -1,0 +1,17 @@
+<h1> Stylist Information </h1>
+
+<p>NAME: <%= @stylist.stylist_name %> </p>
+
+<ul>
+  <% @stylist.clients.each() do |client| %>
+    <li><%= client.client_name %></li>
+  <% end %>
+</ul>
+
+
+
+<form action="/clients" method="post">
+  <input type="text" id="client_name" name="client_name" placeholder="Enter name of client">
+  <input id="stylist_id" name="stylist_id" type="hidden" value= <%= @stylist.id %>>
+  <button type="submit">Add Client</button
+</form>
