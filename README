@@ -1,0 +1,16 @@
+Written using Ruby 2.1.5p273
+
+Run '$ gem install bundler'
+Run '$ gem install rspec'
+Run '$ gem install pry'
+
+
+Launch Sinatra app with '$ ruby app.rb'
+Launch database with '$ postgres'
+
+Go to https://local:host4567/
+
+GPL v2 Copyright 2015 Crystal Contreras-Grossman
+
+Known bugs:
+App does not work with original database, only test
