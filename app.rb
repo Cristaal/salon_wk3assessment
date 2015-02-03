@@ -15,7 +15,7 @@ post('/index') do
   stylist_name = params.fetch("stylist_name")
   stylist = Stylist.new({:stylist_name => stylist_name, :id => nil})
   stylist.save()
-  (:show)
+  erb(:show)
 end
 
 get('/stylists/:id') do
