@@ -1,4 +1,5 @@
 Written using Ruby 2.1.5p273
+This application is an assessment for Epicodus. The user is able to enter the name of a stylist, and then assign a client to that stylist. You should also be able to click on either a client or a stylist to see with whom they're associated.
 
 Run '$ gem install bundler'
 Run '$ gem install rspec'
