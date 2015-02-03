@@ -3,7 +3,7 @@ require("sinatra/reloader")
 require("./lib/stylist")
 require("./lib/client")
 require("pg")
-
+require("pry")
 DB = PG.connect({:dbname => "salon_database_test" })
 
 get('/') do
@@ -15,7 +15,8 @@ post('/index') do
   stylist_name = params.fetch("stylist_name")
   stylist = Stylist.new({:stylist_name => stylist_name, :id => nil})
   stylist.save()
-  erb(:show)
+  @stylists = Stylist.all()
+  erb(:index)
 end
 
 get('/stylists/:id') do
